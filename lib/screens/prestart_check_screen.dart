@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:insurhack_izveshtaj_app/main.dart';
 import 'package:insurhack_izveshtaj_app/screens/circumstances_of_the_accident_screen.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class PreStartCheck extends StatefulWidget {
   static const routeName = '/prestart_check';
 
@@ -20,7 +22,13 @@ class _PreStartCheckState extends State<PreStartCheck> {
   static const _colorTertiary = Color.fromRGBO(0,0,120,1);
   static const _colorRed = Color.fromRGBO(245, 7, 7, 1);
   static const _colorWhite = Color.fromRGBO(255, 255, 255, 1);
-  // police button
+
+  GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
+  int navigationIndex = 0;
+  static const IconData rightCircle = const IconData(0xf362,
+      fontFamily: CupertinoIcons.iconFont,
+      fontPackage: CupertinoIcons.iconFontPackage);
+
   bool enableCallButton() {
     return _alcohol || _injured || _driveable || _plates || _licence;
   }
@@ -79,26 +87,43 @@ class _PreStartCheckState extends State<PreStartCheck> {
         )
       ),bottomNavigationBar:BottomNavigationBar(
       type: BottomNavigationBarType.fixed ,
-      backgroundColor: _colorPrimary,
+      backgroundColor: !enableCallButton() ? _colorPrimary : _colorSecondary,
+      key: globalKey,
       items: [
         BottomNavigationBarItem(
-
+          icon: Icon(Icons.home,color: _colorWhite),
+          title: new Text('Излези',style: TextStyle(color:_colorWhite ),),
+        ),
+        enableCallButton()?
+        BottomNavigationBarItem(
           icon: Icon(Icons.call,color: _colorWhite),
           title: new Text('Повикај полиција',style: TextStyle(color:_colorWhite ),),
-
-        ),
-
+        ):
         BottomNavigationBarItem(
-          icon: Icon(Icons.arrow_forward_ios,color:_colorWhite),
+          backgroundColor: _colorWhite,
+          icon: Icon(FontAwesomeIcons.chevronRight  , color: _colorWhite,),
           title: new Text('Продолжи',style: TextStyle(color:_colorWhite ),),
-
         )
       ],
-      onTap: (index){
+      onTap: (int index) {
+        setState(() {
+          navigationIndex = index;
+          switch (navigationIndex ) {
+            case 0:
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                return MyApp();
+              }));
+              break;
+            case 1:
 
-       },
+              break;
+            case 2:
+
+              break;
+          }
+        });
+      },
     )
     );
   }
 }
-
