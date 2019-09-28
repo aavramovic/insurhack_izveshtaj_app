@@ -9,32 +9,33 @@ class CircumstancesOfTheAccidentScreen extends StatefulWidget {
 
 class _CircumstancesOfTheAccidentScreenState extends State<CircumstancesOfTheAccidentScreen> {
   // circumstances
-  var _wasParked;
-  var _openDoor;
-  var _enteringParking;
-  var _exitingParking;
-  var _enteringParkingOrOther;
-  var _enteringTrafficCircle;
-  var _drivingInTrafficCircle;
-  var _sameDirectionSameLane;
-  var _sameDirectionDifferentLane;
-  var _changingLane;
-  var _overtake;
-  var _turnRight;
-  var _turnLeft;
-  var _reverse;
-  var _wrongLane;
-  var _rightSideJunction;
-  var _streetSigns;
+  var _wasParked=false;
+  var _openDoor=false;
+  var _enteringParking=false;
+  var _exitingParking=false;
+  var _enteringParkingOrOther=false;
+  var _enteringTrafficCircle=false;
+  var _drivingInTrafficCircle=false;
+  var _sameDirectionSameLane=false;
+  var _sameDirectionDifferentLane=false;
+  var _changingLane=false;
+  var _overtake=false;
+  var _turnRight=false;
+  var _turnLeft=false;
+  var _reverse=false;
+  var _wrongLane=false;
+  var _rightSideJunction=false;
+  var _streetSigns=false;
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text("Околности"),
       ),
-      body: Container(
+      body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               ListView(
