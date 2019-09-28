@@ -31,16 +31,13 @@ class _CircumstancesOfTheAccidentScreenState extends State<CircumstancesOfTheAcc
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text("Околности"),
       ),
-      body: SingleChildScrollView(
+      body: Center(
+      child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              ListView(
-                shrinkWrap: true,
-                children: <Widget>[
                   SwitchListTile(
                     title: const Text('било паркирано/застанало'),
                     value: _wasParked,
@@ -127,21 +124,8 @@ class _CircumstancesOfTheAccidentScreenState extends State<CircumstancesOfTheAcc
                     onChanged: (bool value) { setState(() { _streetSigns = value; }); },
                   ),//17
                 ],
-              ),
-              Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      RaisedButton(
-                        child: Text("Повикај полиција"),
-                        onPressed: null
-                          // TODO route to next page
-                      ),
-                    ],
-                  )
-              ),
-            ],
           )
+        ),
       ),
     );
   }
