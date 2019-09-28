@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insurhack_izveshtaj_app/main.dart';
 import 'package:insurhack_izveshtaj_app/screens/circumstances_of_the_accident_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 class PreStartCheck extends StatefulWidget {
   static const routeName = '/prestart_check';
 
@@ -115,7 +116,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
               }));
               break;
             case 1:
-
+              _launchCaller();
               break;
             case 2:
 
@@ -125,5 +126,13 @@ class _PreStartCheckState extends State<PreStartCheck> {
       },
     )
     );
+  }
+}
+_launchCaller() async {
+  const url = "tel:192";
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
