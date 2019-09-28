@@ -26,6 +26,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Околности"),
+        backgroundColor: Color.fromRGBO(150, 0, 200, 70),
       ),
       body: Container(
         child: Column(
@@ -92,7 +93,26 @@ class _PreStartCheckState extends State<PreStartCheck> {
             ),
           ],
         )
-      ),
+      ),bottomNavigationBar:BottomNavigationBar(
+      type: BottomNavigationBarType.fixed ,
+      backgroundColor: Color.fromRGBO(150, 0, 200, 70),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.call,color:Color.fromRGBO(255, 255, 255, 100)),
+          title: new Text('Повикај полиција',style: TextStyle(color:Color.fromRGBO(255, 255, 255, 100) ),),
+
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(Icons.arrow_forward_ios,color:Color.fromRGBO(255, 255, 255, 100)),
+          title: new Text('Продолжи',style: TextStyle(color:Color.fromRGBO(255, 255, 255, 100) ),),
+
+        )
+      ],
+      onTap: (index){
+
+       },
+    )
     );
   }
 }
