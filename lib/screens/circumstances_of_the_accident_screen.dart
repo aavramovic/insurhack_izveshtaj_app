@@ -127,6 +127,20 @@ class _CircumstancesOfTheAccidentScreenState extends State<CircumstancesOfTheAcc
           )
         ),
       ),
+      persistentFooterButtons: <Widget>[
+        FlatButton(
+          onPressed: (){
+            //TODO return next view
+          },
+          child: Text("Verify"),
+          color: Colors.blue,
+          textColor: Colors.white,
+          disabledColor: Colors.grey,
+          disabledTextColor: Colors.black,
+          padding: EdgeInsets.all(8.0),
+          splashColor: Colors.blueAccent,
+        ),
+      ],
     );
   }
 }
