@@ -34,6 +34,7 @@ dependencies:
   image_picker:
   path:
   intl:
+  flutter_colorpicker:
   location:
 
 

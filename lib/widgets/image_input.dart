@@ -36,6 +36,7 @@ class _ImageInputState extends State<ImageInput> {
 
   @override
   Widget build(BuildContext context) {
+    final _colorSecondary = Color.fromRGBO(204,0,64, 1);
     return Row(
       children: <Widget>[
         Container(
@@ -62,10 +63,8 @@ class _ImageInputState extends State<ImageInput> {
         Expanded(
           child: FlatButton.icon(
             icon: Icon(Icons.camera),
-            label: Text('Take Picture'),
-            textColor: Theme
-                .of(context)
-                .primaryColor,
+            label: Text('Сликај ја несреќата'),
+            textColor: _colorSecondary,
             onPressed: _takePicture,
           ),
         ),
