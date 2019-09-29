@@ -11,6 +11,7 @@ import 'package:insurhack_izveshtaj_app/providers/driver.dart';
 import 'package:insurhack_izveshtaj_app/widgets/image_input.dart';
 import 'package:insurhack_izveshtaj_app/widgets/location_input.dart';
 import 'package:insurhack_izveshtaj_app/screens/qr_generated_code_screen.dart';
+import 'circumstances_of_the_accident_screen.dart';
 
 
 class MainFormScreen extends StatefulWidget {
@@ -34,6 +35,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
 
   TabController _tabController;
   var index = 0;
+  int navigationIndex =0;
 
   void _selectImage(File pickedImage){
     _pickedImage = pickedImage;
@@ -56,6 +58,14 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     String brojNaIzveshtaj = Provider.of<Izveshtai>(context, listen: false).brojNaIzveshtaj;
+    const _colorPrimary = Color.fromRGBO(0,145,100, 1);
+    const _colorSecondary = Color.fromRGBO(204,0,64, 1);
+    const _colorTertiary = Color.fromRGBO(0,0,120,1);
+    const _colorRed = Color.fromRGBO(245, 7, 7, 1);
+    const _colorWhite = Color.fromRGBO(255, 255, 255, 1);
+
+    final _formKey = GlobalKey<FormState>();
+    GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
 
     return Scaffold(
       appBar: AppBar(
@@ -213,39 +223,45 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: _colorPrimary,
+        key: globalKey,
+        items: [
+          BottomNavigationBarItem(
+            // activeIcon: Icon(Icons.add_to_home_screen, color: Colors.grey,),
+            icon: Icon(Icons.home, color: _colorPrimary),
+            title: Text(''),
+            /*
+            title: new Text(
+              'Излези',
+              style: TextStyle(color: _colorWhite),
+            ),
+             */
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: _colorWhite,
+            icon: Icon(
+              FontAwesomeIcons.chevronRight,
+              color: _colorWhite,
+            ),
+            title: new Text(
+              'Продолжи',
+              style: TextStyle(color: _colorWhite),
+            ),
+          )
+        ],
+        onTap: (int index) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) {
+                  return CircumstancesOfTheAccidentScreen();
+                }
+            )
+         );
+         },
+      ),
     );
 
-      /*
-      body: Stepper(
-          steps: _mySteps(extra: _showExtraDriverFields),
-          currentStep: this._currentStep,
-          onStepTapped: (step) {
-            setState(() {
-              this._currentStep = step;
-            });
-          },
-          onStepContinue: () {
-            setState(() {
-              if(this._currentStep < this._mySteps(extra: _showExtraDriverFields).length - 1){
-                this._currentStep = this._currentStep + 1;
-              } else {
-                print('Completed');
-              }
-            });
-          },
-          onStepCancel: () {
-            setState(() {
-              if (this._currentStep > 0){
-                this._currentStep = this._currentStep - 1;
-              } else {
-                this._currentStep = 0;
-              }
-            });
-          },
-        ),
-
-    );
-       */
   }
 
 

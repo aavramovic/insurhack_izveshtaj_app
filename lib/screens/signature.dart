@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -51,6 +52,25 @@ class _DrawState extends State<Draw> {
                       IconButton(
                           icon: Icon(Icons.save),
                           onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Цртеж од несреќата"),
+                                  content: Text("Вашиот цртеж успешно е поставен"),
+                                  actions: <Widget>[
+                                    RaisedButton(
+                                      child: Text("ОК", style: TextStyle(color: Colors.white),),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              }
+                            );
+                            /*
                             Alert(
                               context: context,
                               type: AlertType.success,
@@ -67,6 +87,8 @@ class _DrawState extends State<Draw> {
                                 )
                               ],
                             ).show();
+
+                             */
                           }),
                       IconButton(
                           icon: Icon(Icons.album),

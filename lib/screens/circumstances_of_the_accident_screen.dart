@@ -4,6 +4,8 @@ import 'package:insurhack_izveshtaj_app/main.dart';
 import 'package:insurhack_izveshtaj_app/screens/prestart_check_screen.dart';
 import 'package:insurhack_izveshtaj_app/screens/confirmation_screen.dart';
 import 'package:insurhack_izveshtaj_app/screens/start_new_screen.dart';
+import 'personal_notes.dart';
+
 class CircumstancesOfTheAccidentScreen extends StatefulWidget {
   static const routeName = '/circumstances_of_the_accident';
 
@@ -47,7 +49,7 @@ class _CircumstancesOfTheAccidentScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Околности"),
+        title: Text("Околности за вашето возило"),
         backgroundColor: _colorPrimary,
       ),
       body: Center(
@@ -239,11 +241,15 @@ class _CircumstancesOfTheAccidentScreenState
         key: globalKey,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: _colorWhite),
+            // activeIcon: Icon(Icons.add_to_home_screen, color: Colors.grey,),
+            icon: Icon(Icons.home, color: _colorPrimary),
+            title: Text(''),
+            /*
             title: new Text(
               'Излези',
               style: TextStyle(color: _colorWhite),
             ),
+             */
           ),
           BottomNavigationBarItem(
             backgroundColor: _colorWhite,
@@ -258,50 +264,12 @@ class _CircumstancesOfTheAccidentScreenState
           )
         ],
         onTap: (int index) {
-          setState(() {
-            navigationIndex = index;
-            switch (navigationIndex) {
-              case 0:
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return MyApp();
-                }));
-                break;
-              case 1:
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        content: Form(
-                          key: _formKey,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text("Со продолжување на следниот чекор потоа нема да можете да се вратите на овој чекор", textAlign: TextAlign.center, textScaleFactor: 1.2,),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: RaisedButton(
-                                  child: Text("Прифаќам"),
-                                  onPressed: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (_) {
-                                          return StartNew();
-                                        }
-                                    ));
-                                  },
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    });
-                break;
-            }
-          });
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) {
+                return PersonalNotesScreen();
+              }
+          )
+          );
         },
       ),
 
