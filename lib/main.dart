@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'screens/prestart_check_screen.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,12 +9,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Дигитален Европски Извештај',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      builder: (ctx) => Izveshtai(),
+      child: MaterialApp(
+        title: 'Дигитален Европски Извештај',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'Дигитален Европски Извештај'),
       ),
-      home: MyHomePage(title: 'Дигитален Европски Извештај'),
     );
   }
 }
