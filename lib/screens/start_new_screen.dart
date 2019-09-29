@@ -66,7 +66,7 @@ class _StartNewState extends State<StartNew> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Почетни Информации"),
-        backgroundColor: Color.fromRGBO(0, 204, 140, 1),
+        backgroundColor: _colorPrimary,
         /*
         actions: <Widget>[
           IconButton(

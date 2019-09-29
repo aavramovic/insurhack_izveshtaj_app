@@ -41,7 +41,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Околности"),
-          backgroundColor: Color.fromRGBO(0, 204, 140, 1),
+          backgroundColor: _colorPrimary,
         ),
         body: Container(
             child: Column(

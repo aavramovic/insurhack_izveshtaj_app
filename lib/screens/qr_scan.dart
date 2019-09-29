@@ -108,7 +108,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Скенирај QR код"),
-        backgroundColor: Color.fromRGBO(0, 204, 140, 1),
+        backgroundColor: _colorPrimary,
       ),
       body: Center(
         child: Column(
@@ -126,7 +126,7 @@ class _QRViewExampleState extends State<QRViewExample> {
               child: RaisedButton(
                 child: success ? Text("Продолжи", textScaleFactor: 1.2,) : Text("Вклучи ја камерата за скенирање", textScaleFactor: 1.2,),
                 textColor: _colorWhite,
-                color: _colorSecondary,
+                color: _colorPrimary,
                 onPressed: success
                     ? () { Navigator.of(context).push(MaterialPageRoute(builder: (_) { return MainFormScreen(); } )); }
                     : _scanQR,
