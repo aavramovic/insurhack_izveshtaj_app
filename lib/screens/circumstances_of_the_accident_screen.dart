@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:insurhack_izveshtaj_app/main.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtaj.dart';
 import 'package:insurhack_izveshtaj_app/screens/prestart_check_screen.dart';
 import 'package:insurhack_izveshtaj_app/screens/confirmation_screen.dart';
 import 'package:insurhack_izveshtaj_app/screens/start_new_screen.dart';
@@ -264,6 +267,27 @@ class _CircumstancesOfTheAccidentScreenState
           )
         ],
         onTap: (int index) {
+          Izveshtaj izveshtaj = Provider.of<Izveshtai>(context).izveshtaj;
+          izveshtaj.stoi = _wasParked;
+          izveshtaj.vrata = _openDoor;
+          izveshtaj.vlezParking = _enteringParking;
+          izveshtaj.izlezParking = _exitingParking;
+          izveshtaj.vlezPrivat = _enteringParkingOrOther;
+          izveshtaj.voKruzhen = _enteringTrafficCircle;
+          izveshtaj.poKruzhen = _drivingInTrafficCircle;
+          izveshtaj.zadenIstIst = _sameDirectionSameLane;
+          izveshtaj.istaNasokaDrLenta = _sameDirectionDifferentLane;
+          izveshtaj.prestrojuvanje = _changingLane;
+          izveshtaj.preteknuvanje = _overtake;
+          izveshtaj.vrtiDesno = _turnRight;
+          izveshtaj.vrtiLevo = _turnLeft;
+          izveshtaj.dviziNazad = _reverse;
+          izveshtaj.preminaloSpr = _wrongLane;
+          izveshtaj.desnoRaskr = _rightSideJunction;
+          izveshtaj.znaciSemafor = _streetSigns;
+
+          Provider.of<Izveshtai>(context).izveshtaj = izveshtaj;
+
           Navigator.of(context).push(MaterialPageRoute(
               builder: (_) {
                 return PersonalNotesScreen();

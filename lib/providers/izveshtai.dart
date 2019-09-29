@@ -10,7 +10,7 @@ import 'package:insurhack_izveshtaj_app/providers/izveshtaj.dart';
 class Izveshtai with ChangeNotifier {
   String _brojNaIzveshtaj;
 
-  Izveshtaj izveshtaj;
+  Izveshtaj izveshtaj = new Izveshtaj();
 
   String get brojNaIzveshtaj {
     return _brojNaIzveshtaj;
@@ -74,7 +74,7 @@ class Izveshtai with ChangeNotifier {
       // first save to database
       final response = await http
           .post(url, body: json.encode({
-        'datetime': izveshtaj.dateTime.toIso8601String(),
+        'datetime': DateTime.now().toIso8601String(),
         'damageToOtherVehicles': izveshtaj.damageToOtherVehicles,
         'damageToOtherProperty': izveshtaj.damageToOtherProperty,
 
@@ -93,5 +93,41 @@ class Izveshtai with ChangeNotifier {
 
   void setQRCode(String qrcode) {
     _brojNaIzveshtaj = qrcode;
+  }
+
+  void setInformation(
+      String brojNaPolisa,
+      String nrVozacka,
+      String katVozacka,
+      String expVozacka,
+      bool istaLichnost,
+      String ime,
+      String prezime,
+      String adresa,
+      String drzava,
+      String dataRagjanje,
+      String telefon,
+      String email,
+      String imageUrl,
+      int latitude,
+      int longitude,
+      ) {
+    izveshtaj.brojNaPolisa = brojNaPolisa;
+
+    izveshtaj.driver.name = ime;
+    izveshtaj.driver.surname = prezime;
+    izveshtaj.driver.address = adresa;
+    izveshtaj.driver.country = drzava;
+    izveshtaj.driver.birthdate = dataRagjanje;
+    izveshtaj.driver.telephoneNumber = telefon;
+    izveshtaj.driver.email = email;
+    izveshtaj.driver.licenceValidUntil = expVozacka;
+    izveshtaj.driver.licenceCategory = katVozacka;
+    izveshtaj.driver.licenceNumber = nrVozacka;
+
+    izveshtaj.latitude = latitude;
+    izveshtaj.longitude = longitude;
+    izveshtaj.imageUrl = imageUrl;
+
   }
 }

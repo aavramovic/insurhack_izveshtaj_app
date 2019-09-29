@@ -4,6 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:insurhack_izveshtaj_app/widgets/signature_widget.dart';
 
+import 'package:provider/provider.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtaj.dart';
+import 'package:insurhack_izveshtaj_app/screens/final_screen.dart';
+
 class PersonalNotesScreen extends StatefulWidget {
   @override
   _PersonalNotesScreenState createState() => _PersonalNotesScreenState();
@@ -20,6 +25,7 @@ class _PersonalNotesScreenState extends State<PersonalNotesScreen> {
   GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
   int navigationIndex = 0;
   final _formKey = GlobalKey<FormState>();
+  var _notes;
 
 
   @override
@@ -38,6 +44,7 @@ class _PersonalNotesScreenState extends State<PersonalNotesScreen> {
               decoration: InputDecoration(labelText: 'Лични забелешки'),
               onChanged: (value) { setState(() {
                 // TODO sredi za informaciite
+                _notes = value;
               });
               },
             ),
@@ -81,7 +88,13 @@ class _PersonalNotesScreenState extends State<PersonalNotesScreen> {
           )
         ],
         onTap: (int index) {
-          null;
+          Provider.of<Izveshtai>(context).izveshtaj.notes = _notes;
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) {
+                return FinalScreen();
+              }
+          )
+          );
         },
       ),
 

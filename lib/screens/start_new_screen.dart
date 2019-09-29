@@ -24,8 +24,7 @@ class _StartNewState extends State<StartNew> {
   final _formKey = GlobalKey<FormState>();
   GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
 
-  var _newIzveshtaj = Izveshtaj(dateTime: DateTime.now(), damageToOtherProperty: false, damageToOtherVehicles: false);
-
+  var _newIzveshtaj = Izveshtaj(dateTime: DateTime.now(), damageToOtherProperty: false, damageToOtherVehicles: true);
 
   int navigationIndex = 0;
   var _isLoading = false;
@@ -63,6 +62,7 @@ class _StartNewState extends State<StartNew> {
 
   @override
   Widget build(BuildContext context) {
+    print(_newIzveshtaj.damageToOtherVehicles);
     return Scaffold(
       appBar: AppBar(
         title: Text("Почетни Информации"),
@@ -81,10 +81,12 @@ class _StartNewState extends State<StartNew> {
         padding: EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
+              /*
               ListTile(
                 leading: Text('Датум', style: TextStyle(fontWeight: FontWeight.bold),),
                 title: Text(DateFormat('yyyy-MM-dd – kk:mm').format(_newIzveshtaj.dateTime), textAlign: TextAlign.center,),
               ),
+               */
               ListView(
                 shrinkWrap: true,
                 children: <Widget>[

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtaj.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -58,6 +59,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     String brojNaIzveshtaj = Provider.of<Izveshtai>(context, listen: false).brojNaIzveshtaj;
+    Izveshtaj izveshtaj = Provider.of<Izveshtai>(context, listen: false).izveshtaj;
     const _colorPrimary = Color.fromRGBO(0,145,100, 1);
     const _colorSecondary = Color.fromRGBO(204,0,64, 1);
     const _colorTertiary = Color.fromRGBO(0,0,120,1);
@@ -113,6 +115,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
 
                   onChanged: (value) { setState(() {
                     _policyNumber = value;
+                    izveshtaj.brojNaPolisa = value;
                   });
                   },
                 ),
@@ -123,6 +126,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   onChanged: (value) {
                     setState(() {
                       _driver.licenceNumber = value;
+                      izveshtaj.driver.licenceNumber = value;
                     });
                   },
                 ),
@@ -133,6 +137,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   onChanged: (value) {
                     setState(() {
                       _driver.licenceCategory = value;
+                      izveshtaj.driver.licenceCategory = value;
                     });
                   },
                 ),
@@ -143,6 +148,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   onChanged: (value) {
                     setState(() {
                       _driver.licenceValidUntil = value;
+                      izveshtaj.driver.licenceValidUntil = value;
                     });
                   },
                 ),
@@ -157,6 +163,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   title: Text("Возачот и осигуреникот се иста личност"),
                   value: !_showExtraDriverFields, onChanged: (bool value) { setState(() {
                     _showExtraDriverFields = !value;
+                    izveshtaj.osigurenikIstSoVozach = value;
                   });},
                   activeColor: _colorCalm,
                 ),
@@ -169,7 +176,10 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         ),   ),
                         onChanged: (value) { setState(() {
                           _driver.name = value;
+                          izveshtaj.driver.name = value;
                         });
+                        print(izveshtaj);
+                        print(Provider.of<Izveshtai>(context, listen: false).izveshtaj);
                         },
                       ),
                       TextField(
@@ -179,6 +189,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         onChanged: (value) {
                           setState(() {
                             _driver.surname = value;
+                            izveshtaj.driver.surname = value;
                           });
                         },
                       ),
@@ -189,6 +200,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         onChanged: (value) {
                           setState(() {
                             _driver.address = value;
+                            izveshtaj.driver.address = value;
                           });
                         },
                       ),
@@ -199,6 +211,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         onChanged: (value) {
                           setState(() {
                             _driver.country = value;
+                            izveshtaj.driver.country = value;
                           });
                         },
                       ),
@@ -209,6 +222,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         onChanged: (value) {
                           setState(() {
                             _driver.birthdate = value;
+                            izveshtaj.driver.birthdate = value;
                           });
                         },
                       ),
@@ -219,6 +233,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         onChanged: (value) {
                           setState(() {
                             _driver.telephoneNumber = value;
+                            izveshtaj.driver.telephoneNumber = value;
                           });
                         },
                       ),
@@ -229,6 +244,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         onChanged: (value) {
                           setState(() {
                             _driver.email = value;
+                            izveshtaj.driver.email = value;
                           });
                         },
                       ),
@@ -280,6 +296,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
           )
         ],
         onTap: (int index) {
+          Provider.of<Izveshtai>(context, listen: false).izveshtaj = izveshtaj;
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) {
                   return CircumstancesOfTheAccidentScreen();

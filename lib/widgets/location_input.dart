@@ -4,6 +4,8 @@ import 'package:location/location.dart';
 
 import 'package:insurhack_izveshtaj_app/helpers/location_helper.dart';
 import 'package:insurhack_izveshtaj_app/screens/signature.dart';
+import 'package:provider/provider.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
 
 class LocationInput extends StatefulWidget {
   @override
@@ -23,6 +25,7 @@ class _LocationInputState extends State<LocationInput> {
     setState(() {
       _previewImageUrl = staticMapImageUrl;
       _drawImg = drawImageUrl;
+      // Provider.of<Izveshtai>(context, listen: false).izveshtaj.imageUrl = _previewImageUrl;
     });
 
     print(drawImageUrl);
