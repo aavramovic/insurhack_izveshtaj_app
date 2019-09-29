@@ -24,7 +24,7 @@ class _StartNewState extends State<StartNew> {
   final _formKey = GlobalKey<FormState>();
   GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
 
-  var _newIzveshtaj = Izveshtaj(dateTime: DateTime.now(), location: '', damageToOtherProperty: false, damageToOtherVehicles: false);
+  var _newIzveshtaj = Izveshtaj(dateTime: DateTime.now(), damageToOtherProperty: false, damageToOtherVehicles: false);
 
 
   int navigationIndex = 0;
