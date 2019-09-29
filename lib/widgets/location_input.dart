@@ -74,12 +74,15 @@ class _LocationInputState extends State<LocationInput> {
             width: double.infinity,
           ),
         ),
-        FlatButton.icon(
-          icon: Icon(FontAwesomeIcons.pencilRuler),
-          label: Text('Скицирај ја несреќата'),
-          textColor: _colorSecondary,
-          onPressed: _openDrawWidget,
-        ),
+        Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: FlatButton.icon(
+            icon: Icon(FontAwesomeIcons.pencilRuler),
+            label: Text('Скицирај ја несреќата'),
+            textColor: _colorSecondary,
+            onPressed: _openDrawWidget,
+          ),
+        )
         /*
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

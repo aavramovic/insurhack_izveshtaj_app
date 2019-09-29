@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:insurhack_izveshtaj_app/widgets/signature_widget.dart';
+
 class PersonalNotesScreen extends StatefulWidget {
   @override
   _PersonalNotesScreenState createState() => _PersonalNotesScreenState();
@@ -28,6 +31,7 @@ class _PersonalNotesScreenState extends State<PersonalNotesScreen> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
               maxLines: 6,
@@ -36,6 +40,14 @@ class _PersonalNotesScreenState extends State<PersonalNotesScreen> {
                 // TODO sredi za informaciite
               });
               },
+            ),
+            Expanded(
+              child: Stack(
+                children: <Widget>[
+                  Draw(),
+                  Text('Вашиот потпис тука', style: TextStyle(color: Colors.grey),),
+                ],
+              ),
             ),
           ],
         ),
