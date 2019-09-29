@@ -60,9 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
               width: MediaQuery.of(context).size.width / 1.7,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
+                    borderRadius: BorderRadius.circular(4.0)),
                 gradient: LinearGradient(
-                    colors: [_colorPrimary, _colorCalm],
+                    colors: [_colorPrimary, _colorPrimary],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight),
               ),
@@ -93,9 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
               width: MediaQuery.of(context).size.width / 1.7,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
+                    borderRadius: BorderRadius.circular(4.0)),
                 gradient: LinearGradient(
-                    colors: [_colorPrimary, _colorCalm],
+                    colors: [_colorPrimary, _colorPrimary],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight),
               ),

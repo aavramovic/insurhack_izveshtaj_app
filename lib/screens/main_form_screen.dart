@@ -56,11 +56,16 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     String brojNaIzveshtaj = Provider.of<Izveshtai>(context, listen: false).brojNaIzveshtaj;
-
+    const _colorPrimary = Color.fromRGBO(0, 145, 100, 1);
+    const _colorSecondary = Color.fromRGBO(204, 0, 64, 1);
+    const _colorTertiary = Color.fromRGBO(0, 0, 120, 1);
+    const _colorRed = Color.fromRGBO(245, 7, 7, 1);
+    const _colorWhite = Color.fromRGBO(255, 255, 255, 1);
+    const _colorCalm = Color.fromRGBO(94, 169, 190, 1);
     return Scaffold(
       appBar: AppBar(
         title: Text('Информации'),
-        backgroundColor: Color.fromRGBO(0, 204, 140, 1),
+        backgroundColor: _colorPrimary,
         actions: <Widget>[
           IconButton(
             icon: Icon(FontAwesomeIcons.qrcode),
@@ -76,7 +81,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
           )
         ],
         bottom: TabBar(
-          indicatorColor: Color.fromRGBO(0, 204, 140, 1),
+          indicatorColor: _colorWhite,
           controller: _tabController,
           tabs: [
             new Tab(icon: Icon(Icons.person),),
@@ -91,16 +96,25 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
           Padding(
             padding: EdgeInsets.all(8.0),
             child: ListView(
+
               children: <Widget>[
+
                 TextField(
-                  decoration: InputDecoration(labelText: 'Број на вашата полиса'),
+
+                  decoration: InputDecoration(labelText: 'Број на вашата полиса',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: _colorCalm),
+                    ),   ),
+
                   onChanged: (value) { setState(() {
                     _policyNumber = value;
                   });
                   },
                 ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'Број на возачката дозвола'),
+                  decoration: InputDecoration(labelText: 'Број на возачката дозвола',focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: _colorCalm),
+                  ),   ),
                   onChanged: (value) {
                     setState(() {
                       _driver.licenceNumber = value;
@@ -108,7 +122,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   },
                 ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'Категорија на возачката дозвола'),
+                  decoration: InputDecoration(labelText: 'Категорија на возачката дозвола',focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: _colorCalm),
+                  ),   ),
                   onChanged: (value) {
                     setState(() {
                       _driver.licenceCategory = value;
@@ -116,7 +132,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   },
                 ),
                 TextField(
-                  decoration: InputDecoration(labelText: 'Возачката дозвола истекува на (ден.месец.година)'),
+                  decoration: InputDecoration(labelText: 'Возачката дозвола истекува на (ден.месец.година)',focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: _colorCalm),
+                  ),   ),
                   onChanged: (value) {
                     setState(() {
                       _driver.licenceValidUntil = value;
@@ -135,19 +153,24 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                   value: !_showExtraDriverFields, onChanged: (bool value) { setState(() {
                     _showExtraDriverFields = !value;
                   });},
+                  activeColor: _colorCalm,
                 ),
                 Container(
                   child: !_showExtraDriverFields ? null : Column(
                     children: <Widget>[
                       TextField(
-                        decoration: InputDecoration(labelText: 'Име'),
+                        decoration: InputDecoration(labelText: 'Име',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) { setState(() {
                           _driver.name = value;
                         });
                         },
                       ),
                       TextField(
-                        decoration: InputDecoration(labelText: 'Презиме'),
+                        decoration: InputDecoration(labelText: 'Презиме',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) {
                           setState(() {
                             _driver.surname = value;
@@ -155,7 +178,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         },
                       ),
                       TextField(
-                        decoration: InputDecoration(labelText: 'Адреса на живеење'),
+                        decoration: InputDecoration(labelText: 'Адреса на живеење',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) {
                           setState(() {
                             _driver.address = value;
@@ -163,7 +188,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         },
                       ),
                       TextField(
-                        decoration: InputDecoration(labelText: 'Држава на престој (по адреса)'),
+                        decoration: InputDecoration(labelText: 'Држава на престој (по адреса)',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) {
                           setState(() {
                             _driver.country = value;
@@ -171,7 +198,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         },
                       ),
                       TextField(
-                        decoration: InputDecoration(labelText: 'Дата на раѓање (ден.месец.година)'),
+                        decoration: InputDecoration(labelText: 'Дата на раѓање (ден.месец.година)',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) {
                           setState(() {
                             _driver.birthdate = value;
@@ -179,7 +208,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         },
                       ),
                       TextField(
-                        decoration: InputDecoration(labelText: 'Телефонски број'),
+                        decoration: InputDecoration(labelText: 'Телефонски број',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) {
                           setState(() {
                             _driver.telephoneNumber = value;
@@ -187,7 +218,9 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
                         },
                       ),
                       TextField(
-                        decoration: InputDecoration(labelText: 'E-Mail адреса'),
+                        decoration: InputDecoration(labelText: 'E-Mail адреса',focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: _colorCalm),
+                        ),   ),
                         onChanged: (value) {
                           setState(() {
                             _driver.email = value;
