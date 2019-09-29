@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'start_new_screen.dart';
+
 class PreStartCheck extends StatefulWidget {
   static const routeName = '/prestart_check';
 
@@ -64,25 +66,40 @@ class _PreStartCheckState extends State<PreStartCheck> {
                 ),
               ],
             ),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    RaisedButton(
-                      child: Text("Повикај полиција"),
-                      onPressed: _alcohol || _injured || _driveable || _plates || _licence ? () {
-                        // TODO route to police call
-                      } : null,
-                    ),
-                    RaisedButton(
-                      child: Text("Продолжи"),
-                      onPressed: _alcohol || _injured || _driveable || _plates || _licence ? null : () {
-                        // TODO next route
-                      },
-                    )
-                  ],
-                )
-            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      RaisedButton(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.call),
+                            Text("Полиција"),
+                          ],
+                        ),
+                        onPressed: _alcohol || _injured || _driveable || _plates || _licence ? () {
+                          // TODO route to police call
+                        } : null,
+                      ),
+                      RaisedButton(
+                        child: Text("Продолжи"),
+                        onPressed: _alcohol || _injured || _driveable || _plates || _licence ? null : () {
+                          // TODO next route
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) {
+                                return StartNew();
+                              }
+                            )
+                          );
+                        },
+                      )
+                    ],
+                  )
+              ),
+            )
           ],
         )
       ),
