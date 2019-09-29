@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insurhack_izveshtaj_app/main.dart';
 
+import 'package:insurhack_izveshtaj_app/screens/start_new_screen.dart';
 
 class Confirmation extends StatefulWidget {
   @override
@@ -37,7 +38,9 @@ class _ConfirmationState extends State<Confirmation> {
                             child: RaisedButton(
                               child: Text("Submit"),
                               onPressed: () {
-                                return MyApp();
+                                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                                  return StartNew();
+                                }));
                               },
                             ),
                           )

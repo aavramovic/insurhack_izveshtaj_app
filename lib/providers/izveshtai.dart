@@ -37,4 +37,8 @@ class Izveshtai with ChangeNotifier {
       throw(error);
     }
   }
+
+  void setQRCode(String qrcode) {
+    _brojNaIzveshtaj = qrcode;
+  }
 }

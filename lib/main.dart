@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/prestart_check_screen.dart';
 import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
+import 'package:insurhack_izveshtaj_app/screens/qr_scan.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,16 +49,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 100.0,),
             ButtonTheme(
-              minWidth: 200.0,
+              minWidth: 310.0,
               height: 100.0,
               child: RaisedButton(
-                child: Text("Нов Извештај"),
+                child: Text("Нов Извештај", textScaleFactor: 1.5,),
                 textColor: _colorWhite,
                 color: _colorSecondary,
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                     return PreStartCheck();
+                  }));
+                },
+              ),
+            ),
+            SizedBox(height: 10.0,),
+            ButtonTheme(
+              minWidth: 310.0,
+              height: 100.0,
+              child: RaisedButton(
+                child: Text("Скенирај постоечки QR код", textScaleFactor: 1.5,),
+                textColor: _colorWhite,
+                color: _colorSecondary,
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                    return QRViewExample();
                   }));
                 },
               ),

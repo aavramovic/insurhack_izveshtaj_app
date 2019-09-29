@@ -28,6 +28,8 @@ dependencies:
   path_provider:
   barcode_scan:
   qr_flutter:
+  qr_code_scanner:
+    #fast_qr_reader_view:
   rflutter_alert:
   image_picker:
   path:

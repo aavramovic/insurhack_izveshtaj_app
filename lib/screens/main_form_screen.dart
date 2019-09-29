@@ -9,6 +9,7 @@ import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
 import 'package:insurhack_izveshtaj_app/providers/driver.dart';
 import 'package:insurhack_izveshtaj_app/widgets/image_input.dart';
 import 'package:insurhack_izveshtaj_app/widgets/location_input.dart';
+import 'package:insurhack_izveshtaj_app/screens/qr_generated_code_screen.dart';
 
 
 class MainFormScreen extends StatefulWidget {
@@ -61,8 +62,15 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.content_copy),
-            onPressed: () { _showQrCode(brojNaIzveshtaj); },
+            //onPressed: () { _showQrCode(brojNaIzveshtaj); },
             // onPressed: () { _showQrRAlert(context, brojNaIzveshtaj); },
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) {
+                  return QRGeneratedCodeScreen();
+                },
+              ));
+            },
           )
         ],
         bottom: TabBar(
