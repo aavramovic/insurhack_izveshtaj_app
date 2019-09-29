@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:insurhack_izveshtaj_app/main.dart';
 import 'package:insurhack_izveshtaj_app/screens/prestart_check_screen.dart';
 import 'package:insurhack_izveshtaj_app/screens/confirmation_screen.dart';
+import 'package:insurhack_izveshtaj_app/screens/start_new_screen.dart';
 class CircumstancesOfTheAccidentScreen extends StatefulWidget {
   static const routeName = '/circumstances_of_the_accident';
 
@@ -278,14 +279,18 @@ class _CircumstancesOfTheAccidentScreenState
                             children: <Widget>[
                               Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Со продолжување на следнио чекор потоа нема да можете да се вратите на овој чекор", textAlign: TextAlign.center,),
+                                child: Text("Со продолжување на следниот чекор потоа нема да можете да се вратите на овој чекор", textAlign: TextAlign.center, textScaleFactor: 1.2,),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: RaisedButton(
-                                  child: Text("Submit"),
+                                  child: Text("Прифаќам"),
                                   onPressed: () {
-                                    return MyApp();
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (_) {
+                                          return StartNew();
+                                        }
+                                    ));
                                   },
                                 ),
                               )
