@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:location/location.dart';
+
+import 'package:insurhack_izveshtaj_app/helpers/location_helper.dart';
 
 class LocationInput extends StatefulWidget {
   @override
@@ -11,8 +14,26 @@ class _LocationInputState extends State<LocationInput> {
 
   Future<void> _getCurrentUserLocation() async {
     final locationData = await Location().getLocation();
-    print(locationData.latitude);
-    print(locationData.longitude);
+    final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(latitude: locationData.latitude, longitude: locationData.longitude, zoom: 20);
+
+    setState(() {
+      _previewImageUrl = staticMapImageUrl;
+    });
+    // print(locationData.latitude);
+    // print(locationData.longitude);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getCurrentUserLocation();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -42,19 +63,11 @@ class _LocationInputState extends State<LocationInput> {
           children: <Widget>[
             FlatButton.icon(
               icon: Icon(
-                Icons.location_on,
+                FontAwesomeIcons.pencilRuler,
               ),
-              label: Text('Current Location'),
+              label: Text('Скицирај ја несреќата'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _getCurrentUserLocation,
-            ),
-            FlatButton.icon(
-              icon: Icon(
-                Icons.map,
-              ),
-              label: Text('Select on Map'),
-              textColor: Theme.of(context).primaryColor,
-              onPressed: () {},
             ),
           ],
         ),
