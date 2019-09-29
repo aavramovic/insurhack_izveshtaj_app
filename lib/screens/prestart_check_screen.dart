@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:insurhack_izveshtaj_app/screens/circumstances_of_the_accident_screen.dart';
 
+import 'signature.dart';
+
 class PreStartCheck extends StatefulWidget {
   static const routeName = '/prestart_check';
 
@@ -83,6 +85,18 @@ class _PreStartCheckState extends State<PreStartCheck> {
                             MaterialPageRoute(
                                 builder: (_) {
                                   return CircumstancesOfTheAccidentScreen();
+                                }
+                            )
+                        );
+                      },
+                    ),
+                    RaisedButton(
+                      child: Text("Продолжи"),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) {
+                                  return Draw();
                                 }
                             )
                         );
