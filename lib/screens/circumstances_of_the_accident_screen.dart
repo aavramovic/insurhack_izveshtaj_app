@@ -287,6 +287,7 @@ class _CircumstancesOfTheAccidentScreenState
           izveshtaj.znaciSemafor = _streetSigns;
 
           Provider.of<Izveshtai>(context).izveshtaj = izveshtaj;
+          print(izveshtaj.znaciSemafor);
 
           Navigator.of(context).push(MaterialPageRoute(
               builder: (_) {

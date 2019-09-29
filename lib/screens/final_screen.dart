@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:insurhack_izveshtaj_app/providers/izveshtai.dart';
+import 'package:insurhack_izveshtaj_app/providers/izveshtaj.dart';
+
 class FinalScreen extends StatelessWidget {
   static const _colorPrimary = Color.fromRGBO(0, 145, 100, 1);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
