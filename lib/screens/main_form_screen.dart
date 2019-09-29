@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -59,9 +60,10 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
     return Scaffold(
       appBar: AppBar(
         title: Text('Информации'),
+        backgroundColor: Color.fromRGBO(0, 204, 140, 1),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.content_copy),
+            icon: Icon(FontAwesomeIcons.qrcode),
             //onPressed: () { _showQrCode(brojNaIzveshtaj); },
             // onPressed: () { _showQrRAlert(context, brojNaIzveshtaj); },
             onPressed: () {
@@ -74,6 +76,7 @@ class _MainFormScreenState extends State<MainFormScreen> with SingleTickerProvid
           )
         ],
         bottom: TabBar(
+          indicatorColor: Color.fromRGBO(0, 204, 140, 1),
           controller: _tabController,
           tabs: [
             new Tab(icon: Icon(Icons.person),),

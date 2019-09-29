@@ -71,7 +71,7 @@ class _QRViewExampleState extends State<QRViewExample> {
   */
 
 
-  String result = "Hey there !";
+  String result = "";
   bool success = false;
 
   Future _scanQR() async {
@@ -108,6 +108,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Скенирај QR код"),
+        backgroundColor: Color.fromRGBO(0, 204, 140, 1),
       ),
       body: Center(
         child: Column(
@@ -123,7 +124,7 @@ class _QRViewExampleState extends State<QRViewExample> {
               minWidth: 310.0,
               height: 100.0,
               child: RaisedButton(
-                child: success ? Text("Продолжи") : Text("Вклучи ја камерата за скенирање",),
+                child: success ? Text("Продолжи", textScaleFactor: 1.2,) : Text("Вклучи ја камерата за скенирање", textScaleFactor: 1.2,),
                 textColor: _colorWhite,
                 color: _colorSecondary,
                 onPressed: success

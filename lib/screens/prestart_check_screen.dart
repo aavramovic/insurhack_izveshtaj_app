@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insurhack_izveshtaj_app/main.dart';
 import 'package:insurhack_izveshtaj_app/screens/circumstances_of_the_accident_screen.dart';
+import 'start_new_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -58,7 +59,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
                     });
                   },
                   secondary:
-                      const Icon(Icons.battery_full, color: _colorPrimary),
+                      const Icon(FontAwesomeIcons.wineBottle, color: _colorPrimary),
                   activeColor: _colorRed,
                 ),
                 SwitchListTile(
@@ -69,7 +70,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
                       _injured = value;
                     });
                   },
-                  secondary: const Icon(Icons.add, color: _colorPrimary),
+                  secondary: const Icon(FontAwesomeIcons.bookMedical, color: _colorPrimary),
                   activeColor: _colorRed,
                 ),
                 SwitchListTile(
@@ -82,7 +83,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
                     });
                   },
                   secondary:
-                      const Icon(Icons.directions_car, color: _colorPrimary),
+                      const Icon(FontAwesomeIcons.carCrash, color: _colorPrimary),
                   activeColor: _colorRed,
                 ),
                 SwitchListTile(
@@ -95,7 +96,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
                     });
                   },
                   secondary:
-                      const Icon(Icons.local_car_wash, color: _colorPrimary),
+                      const Icon(FontAwesomeIcons.calendarWeek, color: _colorPrimary),
                   activeColor: _colorRed,
                 ),
                 SwitchListTile(
@@ -108,7 +109,7 @@ class _PreStartCheckState extends State<PreStartCheck> {
                     });
                   },
                   secondary:
-                      const Icon(Icons.credit_card, color: _colorPrimary),
+                      const Icon(FontAwesomeIcons.idBadge, color: _colorPrimary),
                   activeColor: _colorRed,
                 ),
               ],
@@ -163,7 +164,8 @@ class _PreStartCheckState extends State<PreStartCheck> {
                   }
                   else{
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return CircumstancesOfTheAccidentScreen();
+                      // return CircumstancesOfTheAccidentScreen();
+                      return StartNew();
                     }));
                   }
                   break;

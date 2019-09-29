@@ -33,6 +33,7 @@ dependencies:
   rflutter_alert:
   image_picker:
   path:
+  intl:
   location:
 
 
