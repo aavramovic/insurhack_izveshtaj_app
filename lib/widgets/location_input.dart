@@ -19,6 +19,7 @@ class _LocationInputState extends State<LocationInput> {
     final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(latitude: locationData.latitude, longitude: locationData.longitude, zoom: 20);
     final drawImageUrl = LocationHelper.generateLocationPreviewImage(latitude: locationData.latitude, longitude: locationData.longitude, zoom: 28, width: 600, height: 300);
 
+
     setState(() {
       _previewImageUrl = staticMapImageUrl;
       _drawImg = drawImageUrl;
@@ -51,6 +52,8 @@ class _LocationInputState extends State<LocationInput> {
 
   @override
   Widget build(BuildContext context) {
+    final _colorSecondary = Color.fromRGBO(204,0,64, 1);
+    final _colorWhite = Color.fromRGBO(255, 255, 255, 1);
     return Column(
       children: <Widget>[
         Container(
@@ -74,13 +77,19 @@ class _LocationInputState extends State<LocationInput> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton.icon(
-              icon: Icon(
-                FontAwesomeIcons.pencilRuler,
+            ButtonTheme(
+              minWidth: 200.0,
+              child: RaisedButton(
+                child: Row(
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.pencilRuler),
+                    Text(' Скицирај ја несреќата',),
+                  ],
+                ),
+                textColor: _colorWhite,
+                color: _colorSecondary,
+                onPressed: _openDrawWidget,
               ),
-              label: Text('Скицирај ја несреќата'),
-              textColor: Theme.of(context).primaryColor,
-              onPressed: _openDrawWidget,
             ),
           ],
         ),

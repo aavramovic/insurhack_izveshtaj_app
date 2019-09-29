@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Draw extends StatefulWidget {
   String pictureUrl;
@@ -47,6 +48,26 @@ class _DrawState extends State<Draw> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      IconButton(
+                          icon: Icon(Icons.save),
+                          onPressed: () {
+                            Alert(
+                              context: context,
+                              type: AlertType.success,
+                              title: "Цртеж од несреќата",
+                              desc: "Вашиот цртеж успешно е поставен",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "ОK",
+                                    style: TextStyle(color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () { Navigator.of(context).pop(); Navigator.of(context).pop(); },
+                                  width: 120,
+                                )
+                              ],
+                            ).show();
+                          }),
                       IconButton(
                           icon: Icon(Icons.album),
                           onPressed: () {
