@@ -28,7 +28,8 @@ class _StartNewState extends State<StartNew> {
 
   int navigationIndex = 0;
   var _isLoading = false;
-
+  var _damageToOtherVehicles = false;
+  var _damageToOtherProperty = false;
   Future<void> _saveIzveshtaj() async {
     setState(() {
       _isLoading = true;
@@ -67,7 +68,6 @@ class _StartNewState extends State<StartNew> {
       appBar: AppBar(
         title: Text("Почетни Информации"),
         backgroundColor: _colorPrimary,
-        /*
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.save),
@@ -75,7 +75,6 @@ class _StartNewState extends State<StartNew> {
           )
         ],
 
-         */
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -92,15 +91,17 @@ class _StartNewState extends State<StartNew> {
                 children: <Widget>[
                   SwitchListTile(
                     title: const Text('Дали е причинета штета на други возила?'),
-                    value: false,
-                    onChanged: (bool value) { setState(() { _newIzveshtaj.damageToOtherVehicles = value; }); },
+                    value: _damageToOtherVehicles,
+                    onChanged: (bool value) { setState(() { _newIzveshtaj.damageToOtherVehicles = value; _damageToOtherVehicles=value;}); },
                     secondary: const Icon(FontAwesomeIcons.carCrash, color: _colorPrimary,),
+                    activeColor: _colorSecondary,
                   ),
                   SwitchListTile(
                     title: const Text('Дали е причинета штета на околни предмети?'),
-                    value: false,
-                    onChanged: (bool value) { setState(() { _newIzveshtaj.damageToOtherProperty = value; }); },
+                    value: _damageToOtherProperty,
+                    onChanged: (bool value) { setState(() { _newIzveshtaj.damageToOtherProperty = value; _damageToOtherProperty=value;}); },
                     secondary: const Icon(Icons.traffic, color: _colorPrimary,),
+                    activeColor: _colorSecondary,
                   ),
 
                 ],
